@@ -1,6 +1,29 @@
-const { readFileSync, writeFileSync } = require("fs");
+// #1
+let i = 0;
+let start = new Date();
+function foo() {
+  i++;
+  if (i < 1000) {
+    setImmediate(foo);
+  } else {
+    let end = new Date();
+    console.log("Execution time: ", end - start);
+  }
+}
+foo();
 
-console.log("Start");
+// #2
+let i = 0;
+let start = new Date();
 
-const first = readFileSync("./content/first.txt", "utf8");
-const second = readFileSync("./content/second.txt", "utf8");
+function foo() {
+  i++;
+  if (i < 1000) {
+    setTimeout(foo, 0);
+  } else {
+    let end = new Date();
+    console.log("Exeuction time: ", end - start);
+  }
+}
+
+foo();
