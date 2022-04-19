@@ -13,6 +13,8 @@ router.use((req, res, next) => {
 });
 
 router.get("/", async (req, res, next) => {
+  console.log("");
+  console.log(nowPlayingUrl);
   const response = await axios.get(nowPlayingUrl);
   const fetchedData = response.data;
   // res.json(parsedData);
